@@ -1,16 +1,18 @@
 version: '3'
 
 services:
-  postgres:
+  db:
+    build:
+      context: .
     restart: always
-    image: postgres:conference-app
+    image: postgres:conference-db
     environment:
       POSTGRES_PASSWORD: 'Admin@SamGmbH1!'
     ports:
-      - '5432:5432'
+      - '5444:5432'
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata_db:/var/lib/postgresql/data
 
 volumes:
-  pgdata:
+  pgdata_db:
     driver: local
